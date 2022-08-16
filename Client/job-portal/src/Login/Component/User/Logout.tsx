@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navabar from "../../../Layouts/Navabar";
 import {useNavigate} from "react-router-dom";
 import { AuthUtil } from "../../../Util/AuthUtil";
+import { ToastUtil } from "../../../Util/ToastUtil";
 
 
 let Logout:React.FC =() =>{
@@ -12,6 +13,8 @@ let Logout:React.FC =() =>{
         AuthUtil.deleteToken();
         navigate("/");
     },[])
+
+    ToastUtil.displaySuccessToast('Logout is Success!');
     
    
     return(

@@ -14,17 +14,13 @@ interface IState{}
 
 let Home:React.FC<IProps> =() =>{
     const navigate = useNavigate();
-    // let [user, setUser] = useState<UserView>();
-
+    
     // get user info from redux store
     const userState = useSelector((state: RootUserState) => {
         return state[usersFeatureKey];
     });
 
     let {user} = userState;
-    if(!AuthUtil.isLoggedIn()){
-        navigate("/") 
-    }
     if(Object.keys(user).length == 0 || user?.isAdmin){
         navigate("/") 
     }

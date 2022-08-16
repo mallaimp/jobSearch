@@ -43,7 +43,7 @@ let UpdateJob: React.FC<IProps> = ({}) => {
                 if (response.error) {
                     ToastUtil.displayErrorToast(response.error.message);
                 } else {
-                    ToastUtil.displaySuccessToast('Education is Added!');
+                    ToastUtil.displaySuccessToast('Job is Updated Successfully!');
                     navigate('/admin/jobs');
                 }
             })

@@ -6,12 +6,9 @@ import {Link, useNavigate} from "react-router-dom";
 import Navabar from '../../Layouts/Navabar';
 import Spinner from '../../Layouts/Spinner';
 import { UserView } from '../../Login/Model/UserView';
-import LogRegService from '../../Login/Services/LogRegService';
 import { RootProfileState, profileFeatureKey } from '../../Redux/Profile/profile.slices';
 import { AppDispatch } from '../../Redux/Store';
-import { AuthUtil } from '../../Util/AuthUtil';
 import { IExperience } from '../Models/IProfile';
-import { ProfileService } from '../Services/ProfileService';
 import * as profileActions from "../../Redux/Profile/profile.actions";
 import { ToastUtil } from '../../Util/ToastUtil';
 
@@ -83,22 +80,6 @@ let AddExperience: React.FC<IProps> = ({}) => {
         }
         setValidated(true);
     };
-
-    useEffect(()=>{
-
-        // LogRegService.userAuthenticate().then((response:any)=>{
-        //     let results:any = response.data.user;
-        //     setUser(results);
-        // }).catch((error)=>{
-        //     console.log(error)
-        // })
-        // if(!AuthUtil.isLoggedIn()){
-        //     navigate("/");
-        // }
-        // if(user?.isAdmin){
-        //    navigate("/") 
-        // }
-    },[])
     return (
         <>
             <Navabar/>

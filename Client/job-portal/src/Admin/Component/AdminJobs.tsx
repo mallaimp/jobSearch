@@ -2,10 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navabar from "../../Layouts/AdminNavbar";
 import { Container, ModalTitle, Table } from "react-bootstrap";
 import { UserView } from "../../Login/Model/UserView";
-import { AuthUtil } from "../../Util/AuthUtil";
 import {useNavigate , Link} from "react-router-dom";
-import { IJObs } from "../Model/IJobs";
-import LogRegService from "../../Login/Services/LogRegService";
 import * as adminJobActions from "../../Redux/AdminJob/job.actions";
 import { useDispatch, useSelector } from "react-redux";
 import { jobFeatureKey, RooAdminJobState } from "../../Redux/AdminJob/job.slice";
@@ -28,12 +25,6 @@ let AdminJobs:React.FC<IProps> =() =>{
     let {jobs,loading,successMessage} = jobState;
     useEffect(()=>{
         dispatch(adminJobActions.getAllJObsActions());
-        // if(user?.isAdmin === false){
-        //     navigate("/admin/login");
-        // }
-        // if(!AuthUtil.isLoggedIn()){
-        //     navigate("/admin/login");
-        // }
     },[successMessage])
     
 
@@ -42,7 +33,7 @@ let AdminJobs:React.FC<IProps> =() =>{
             if (response.error) {
                 ToastUtil.displayErrorToast(response.error.message);
             } else {
-                ToastUtil.displaySuccessToast('Education is Added!');
+                ToastUtil.displaySuccessToast('Job is Deleted Successfully!');
             }
         })
     }

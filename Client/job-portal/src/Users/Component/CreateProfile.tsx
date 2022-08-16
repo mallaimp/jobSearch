@@ -7,9 +7,9 @@ import { UserView } from '../../Login/Model/UserView';
 import LogRegService from '../../Login/Services/LogRegService';
 import { profileFeatureKey, RootProfileState } from '../../Redux/Profile/profile.slices';
 import { AppDispatch } from '../../Redux/Store';
-import { AuthUtil } from '../../Util/AuthUtil';
-import { IProfile } from '../Models/IProfile';
 import { ProfileService } from '../Services/ProfileService';
+import * as profileActions from "../../Redux/Profile/profile.actions";
+import { ToastUtil } from '../../Util/ToastUtil';
 
 interface IProps {
 }
@@ -28,17 +28,6 @@ let CreateProfile: React.FC<IProps> = ({}) => {
 
     const [validated, setValidated] = useState(false);
     let [user, setUser] = useState<UserView>();
-    useEffect(()=>{
-        LogRegService.userAuthenticate().then((response:any)=>{
-            let results:any = response.data.user;
-            setUser(results);
-        }).catch((error)=>{
-            console.log(error)
-        })
-        if(user?.isAdmin){
-           navigate("/") 
-        }
-    },[])
 
     const [designations] = useState<string[]>([
         "Software Engineer",
@@ -50,33 +39,11 @@ let CreateProfile: React.FC<IProps> = ({}) => {
         "Other"
     ]);
 
-    const [profile, setProfile] = useState<any>({
-        location: "",
-        skills: "",
-        designation: "",
-        user:"",
-    });
+    const [profile, setProfile] = useState<any>(profileState.profile);
 
     useEffect(()=>{
-        if(user){
-            ProfileService.getAllProfile().then((response)=>{
-                let data = response.data.profile;
-                if(data){
-                    setProfile((prevState: any)=>{
-                        return{
-                            ...prevState,
-                            location:data.location,
-                            skills:data.skills[0],
-                            designation:data.designation,
-                            user:user?._id
-                        }
-                    })
-                }
-            }).catch((error)=>{
-
-            })
-        }
-    },[user])
+        dispatch(profileActions.getMyProfileAction());
+    },[])
 
     const updateInput = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setProfile((prevState: any) => {
@@ -91,11 +58,14 @@ let CreateProfile: React.FC<IProps> = ({}) => {
         event.preventDefault();
         const form = event.currentTarget;
         if (form.checkValidity() === true) {
-            ProfileService.createProfile(profile).then((response)=>{
-                navigate("/profile")
-            }).catch((error)=>{
-                console.log(error);
-            });
+            dispatch(profileActions.createProfileAction(profile)).then((response:any)=>{
+                if (response.error) {
+                    ToastUtil.displayErrorToast(response.error.message);
+                } else {
+                    ToastUtil.displaySuccessToast('Profile Updated Successfully!');
+                    navigate('/profile');
+                }
+            })
         }
         if (form.checkValidity() === false) {
             event.preventDefault();
@@ -111,7 +81,7 @@ let CreateProfile: React.FC<IProps> = ({}) => {
                 <Row>
                     <Col>
                         <h3 className="text-success">
-                            <i className="fa fa-user-circle"></i> Create a Profile
+                            <i className="fa fa-user-circle"></i> Update a Profile
                         </h3>
                         <p className="fst-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus
                             quisquam, suscipit! Ab aut dicta doloribus enim iure laboriosam, maxime nam nihil, odio
@@ -183,7 +153,7 @@ let CreateProfile: React.FC<IProps> = ({}) => {
 
                             
                             <Button variant="success" type="submit" className="me-1">
-                                Create
+                                Update
                             </Button>
                             <Link to={'/profiles/dashboard'}>
                                 <Button variant="dark" type="button">

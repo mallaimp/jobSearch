@@ -52,16 +52,9 @@ let AdminLogin:React.FC<IProps> =() =>{
         event.preventDefault();
         const form = event.currentTarget;
         if (form.checkValidity() === true) {
-            // LogRegService.userLogin(user).then((response)=>{
-            //     setToken(response.data.token);
-            //     AuthUtil.saveToken(response.data.token);
-            //     navigate('/admin/dashboard');
-            // }).catch((error)=>{
-            //     setErrorMessage(error.response.data.message);
-            // })
             dispatch(userActions.loginUserAction(user)).then((response:any)=>{
                 if (response.error) {
-                    ToastUtil.displayErrorToast(response.error.message);
+                    ToastUtil.displayErrorToast("Unauthorized! User Name or Password Incorrect");
                 } else {
                     ToastUtil.displaySuccessToast('Login is Success!');
                     navigate('/admin/dashboard');

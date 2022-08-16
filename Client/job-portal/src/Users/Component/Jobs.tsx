@@ -30,31 +30,9 @@ let Jobs:React.FC<IProps> =() =>{
     let {jobs,loading,successMessage} = jobState;
 
     let [user, setUser] = useState<UserView>();
-    useEffect(()=>{
-        // LogRegService.userAuthenticate().then((response:any)=>{
-        //     let results:any = response.data.user;
-        //     setUser(results);
-        // }).catch((error)=>{
-        //     console.log(error)
-        // })
-        // if(!AuthUtil.isLoggedIn()){
-        //     navigate("/") 
-        // }
-        // if(user?.isAdmin){
-        //     navigate("/");
-        // }
-    },[])
-
-
-    // let [jobs,setJobs] = useState<IJObs[]>([] as IJObs[]);
-
+    
     useEffect(()=>{
         dispatch(UserJobAction.getAllJObsActions());
-        // JobsServices.getAllJObs().then((response: any)=>{
-        //     setJobs(response.data.jobs);
-        // }).catch((error: any)=>{
-        //     console.log(error);
-        // })
     },[]);
 
     let applyJob = (jobId:any) =>{
@@ -71,11 +49,6 @@ let Jobs:React.FC<IProps> =() =>{
                 navigate('/myjobs');
             }
         })
-        // JobsServices.applyJOb(appliedData).then((response)=>{
-        //     navigate("/myjobs");
-        // }).catch((error)=>{
-        //     console.log(error);
-        // })
     }
    
     return(

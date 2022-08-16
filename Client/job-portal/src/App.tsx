@@ -19,30 +19,87 @@ import AdminJobs from './Admin/Component/AdminJobs';
 import AddJob from './Admin/Component/AddJob';
 import UpdateJob from './Admin/Component/UpdateJob';
 import Test from './Users/Component/Test';
+import { ToastContainer } from 'react-toastify';
+import PrivateRoute from './Router/Private.Router';
 
 function App() {
   return (
    <>
      <React.Fragment>
         <BrowserRouter>
+        <ToastContainer
+                    position="top-center"
+                    autoClose={2000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
+                />
             <Routes>
-                <Route path='/dashboard' element={<Home/>}/>
-                <Route path='/jobs' element={<Jobs/>}/>
-                <Route path='/myjobs' element={<MyJobs/>}/>
-                <Route path='/profile' element={<Profile/>}/>
+                <Route path='/dashboard' element={
+                  <PrivateRoute>
+                  <Home/>
+                  </PrivateRoute>
+                }/>
+                <Route path='/jobs' element={
+                  <PrivateRoute>  
+                    <Jobs/>
+                  </PrivateRoute>
+                }/>
+                <Route path='/myjobs' element={
+                  <PrivateRoute>  
+                    <MyJobs/>
+                  </PrivateRoute>
+                }/>
+                <Route path='/profile' element={
+                  <PrivateRoute>  
+                    <Profile/>
+                  </PrivateRoute>
+                }/>
                 <Route path='/' element={<Login/>}/>
                 <Route path='/logout' element={<Logout/>}/>
                 <Route path='/users/register' element={<Register/>}/>
-                <Route path='/profile/addEducation' element={<AddEducation/>}/>
-                <Route path='/profile/addExperiance' element={<AddExperience/>}/>
-                <Route path='/profile/createProfile' element={<CreateProfile/>}/>
+                <Route path='/profile/addEducation' element={
+                  <PrivateRoute>  
+                    <AddEducation/>
+                  </PrivateRoute>
+                }/>
+                <Route path='/profile/addExperiance' element={
+                  <PrivateRoute>  
+                    <AddExperience/>
+                  </PrivateRoute>
+                }/>
+                <Route path='/profile/createProfile' element={
+                  <PrivateRoute>  
+                    <CreateProfile/>
+                  </PrivateRoute>
+                }/>
                 <Route path='/admin/login' element={<AdminLogin/>}/>
-                {/* <Route path='/logout' element={<Logout/>}/> */}
                 <Route path='/admin/register' element={<AdminRegister/>}/>
-                <Route path='/admin/dashboard' element={<AdminHome/>}/>
-                <Route path='/admin/jobs' element={<AdminJobs/>}/>
-                <Route path='/admin/jobs/add' element={<AddJob/>}/>
-                <Route path='/admin/jobs/update/:jobId' element={<UpdateJob/>}/>
+                <Route path='/admin/dashboard' element={
+                  <PrivateRoute>  
+                    <AdminHome/>
+                  </PrivateRoute>
+                }/>
+                <Route path='/admin/jobs' element={
+                  <PrivateRoute>  
+                    <AdminJobs/>
+                  </PrivateRoute>
+                }/>
+                <Route path='/admin/jobs/add' element={
+                  <PrivateRoute>  
+                    <AddJob/>
+                  </PrivateRoute>
+                }/>
+                <Route path='/admin/jobs/update/:jobId' element={
+                  <PrivateRoute>  
+                  <UpdateJob/>
+                </PrivateRoute>
+                }/>
                 <Route path='/test' element={<Test/>}/>
 
             </Routes>

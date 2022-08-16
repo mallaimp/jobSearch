@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navabar from "../../Layouts/AdminNavbar";
-import { UserView } from "../../Login/Model/UserView";
-import { AuthUtil } from "../../Util/AuthUtil";
 import {useNavigate} from "react-router-dom";
-import LogRegService from "../../Login/Services/LogRegService";
 import { useSelector } from "react-redux";
 import { RootUserState, usersFeatureKey } from "../../Redux/User/user.slice";
 
@@ -18,9 +15,6 @@ let AdminHome:React.FC<IProps> =() =>{
     });
 
     let {user} = userState;
-    if(!AuthUtil.isLoggedIn()){
-        navigate("/") 
-    }
     if(Object.keys(user).length == 0 || user?.isAdmin==false){
         navigate("/") 
     }

@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import Navabar from "../../Layouts/Navabar";
-import { UserView } from "../../Login/Model/UserView";
-import { AuthUtil } from "../../Util/AuthUtil";
 import { IEducation, IExperience, IProfile } from "../Models/IProfile";
-import { ProfileService } from "../Services/ProfileService";
 import {Link, useNavigate} from "react-router-dom";
-import LogRegService from "../../Login/Services/LogRegService";
 import { AppDispatch } from "../../Redux/Store";
 import { useDispatch, useSelector } from "react-redux";
 import { profileFeatureKey, RootProfileState } from "../../Redux/Profile/profile.slices";
 import { RootUserState, usersFeatureKey } from "../../Redux/User/user.slice";
 import * as profileActions from "../../Redux/Profile/profile.actions";
-import * as userActions from "../../Redux/User/user.actions";
 import { ToastUtil } from "../../Util/ToastUtil";
 
 interface IProps{}

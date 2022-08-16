@@ -11,8 +11,6 @@ import { UserView } from "../../Model/UserView";
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
-import LogRegService from "../../Services/LogRegService";
-import { AuthUtil } from "../../../Util/AuthUtil";
 import { ToastUtil } from "../../../Util/ToastUtil";
 import {RootUserState, usersFeatureKey} from "../../../Redux/User/user.slice";
 import { AppDispatch } from "../../../Redux/Store";
@@ -34,10 +32,6 @@ let Login:React.FC<IProps> =() =>{
     const navigate = useNavigate();
 
     const [validated, setValidated] = useState(false);
-    // const [token, setToken] = useState("");
-
-    // const [errorMessage, setErrorMessage] = useState("");
-
 
     const [user, setUser] = useState<UserView>({
         email: "",
@@ -53,7 +47,6 @@ let Login:React.FC<IProps> =() =>{
             }
         })
     };
-    ToastUtil.displaySuccessToast('Login is Success!');
     const handleSubmit = (event: any) => {
         event.preventDefault();
         const form = event.currentTarget;
@@ -61,7 +54,7 @@ let Login:React.FC<IProps> =() =>{
 
             dispatch(userActions.loginUserAction(user)).then((response:any)=>{
                 if (response.error) {
-                    ToastUtil.displayErrorToast(response.error.message);
+                    ToastUtil.displayErrorToast("Unauthorized! User Name or Password Incorrect");
                 } else {
                     ToastUtil.displaySuccessToast('Login is Success!');
                     navigate('/dashboard');

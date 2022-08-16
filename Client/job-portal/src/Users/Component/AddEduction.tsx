@@ -70,22 +70,6 @@ let AddEducation: React.FC<IProps> = ({}) => {
         }
         setValidated(true);
     };
-
-    // useEffect(()=>{
-    //     LogRegService.userAuthenticate().then((response:any)=>{
-    //         let results:any = response.data.user;
-    //         setUser(results);
-    //     }).catch((error)=>{
-    //         console.log(error)
-    //     })
-    //     if(!AuthUtil.isLoggedIn()){
-    //         navigate("/");
-    //     }
-    //     if(user?.isAdmin){
-    //        navigate("/") 
-    //     }
-    // },[])
-
    
     return (
         <>

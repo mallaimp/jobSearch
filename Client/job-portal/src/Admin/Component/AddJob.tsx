@@ -3,12 +3,7 @@ import {Button, Col, Container, Form, InputGroup, Row} from "react-bootstrap";
 import { useSelector } from 'react-redux';
 import {Link, useNavigate} from "react-router-dom";
 import Navabar from '../../Layouts/AdminNavbar';
-import { UserView } from '../../Login/Model/UserView';
-import LogRegService from '../../Login/Services/LogRegService';
 import { RootUserState, usersFeatureKey } from '../../Redux/User/user.slice';
-import { AuthUtil } from '../../Util/AuthUtil';
-import { IJObs } from '../Model/IJobs';
-import JobsServices from '../Services/JobsServices';
 import { AppDispatch } from '../../Redux/Store';
 import { useDispatch } from 'react-redux';
 import * as jobActions from "../../Redux/AdminJob/job.actions";
@@ -52,17 +47,12 @@ let AddJob: React.FC<IProps> = ({}) => {
         const form = event.currentTarget;
         if (form.checkValidity() === true) {
 
-            // JobsServices.addJob(job).then((response)=>{
-            //     navigate("/admin/jobs");
-            // }).catch((error)=>{
-            //     console.log(error);
-            // })
             dispatch(jobActions.addJobAction(job)).then((response: any) => {
                 
                 if (response.error) {
                     ToastUtil.displayErrorToast(response.error.message);
                 } else {
-                    ToastUtil.displaySuccessToast('Education is Added!');
+                    ToastUtil.displaySuccessToast('Job is Added Successfully!');
                     navigate('/admin/jobs');
                 }
             })
@@ -74,20 +64,7 @@ let AddJob: React.FC<IProps> = ({}) => {
         setValidated(true);
     };
 
-    // useEffect(()=>{
-    //     LogRegService.userAuthenticate().then((response:any)=>{
-    //         let results:any = response.data.user;
-    //         setUser(results);
-    //     }).catch((error)=>{
-    //         console.log(error);
-    //     })
-    //     if(user?.isAdmin === false){
-    //         navigate("/admin/login");
-    //     }
-    //     if(!AuthUtil.isLoggedIn()){
-    //         navigate("/admin/login");
-    //     }
-    // },[])
+    
     return (
         <>
             <Navabar/>
