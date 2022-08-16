@@ -1,0 +1,31 @@
+[
+    {
+        "title": "Senior Frontend Software Developer - Javascript/AngularJS",
+        "company": "CliqHR Recruitment Services",
+        "description": "Good to have : - Tableau certification (> associate)Required Experience: 8 - 10 Years",
+        "experiance": "7-12 Years",
+        "location": "Bengaluru",
+        "skills": "Angular, CSS, Javascript, React"
+    },
+    {
+        "title": "Senior PHP Software Developer | FullStack",
+        "company": "Transverser Labs (OPC) Private Limited",
+        "description": "Min 4 Yr Exp. in Core PHP + Laravel + WordPress Exp. with MySQL Understanding of OOPs  MVC concepts Frontend Technologies like CSS, JS, jQuery, AJAX Experience with Vanilla Javascript.API ( REST, Soap, GraphQL etc..) Exp. in Shopify is preferred",
+        "experiance": "4-8 Years",
+        "location": "Nasik/Nashik, Hyderabad/Secunderabad, Pune, Ahmedabad, Chennai, Coimbatore, Bangalore/Bengaluru, Delhi / NCR, Mumbai (All Areas)",
+        "skills": "PHP, WordPress, Javascript, React, API, OOPs"
+    },
+
+    {
+        "user":"62eb9a4cd41a019e0b0ec4b3",
+        "title": "Looking For Fullstack Software Developer",
+        "company": "RGBSI",
+        "description": "2 - 9 years of experience in full-stack software development (web application development) Experience working in a product development background would be preferred Exposure to GUI / UX like React.js,Bootstrap,Kendo UI/ Telerik controls is preferred Full-stack development preferred",
+        "experiance": "2-9 Years",
+        "location": "Bangalore/Bengaluru( Wilson Garden )",
+        "skills": "Web API, MVC Framework, ASP.Net, Entity Framework, Jquery, IT Skills"
+    },
+    {
+        "mongodb+srv://mallappaimps:mallappaimps@cluster0.bc2xzuc.mongodb.net/?retryWrites=true&w=majority":"REACT_APP_SERVER_URL=https://jobhire.herokuapp.com/api"
+    }
+]

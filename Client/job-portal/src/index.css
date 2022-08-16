@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.login {
+  background: white url("assets/img/login-background.jpg") no-repeat scroll center;
+  height: 100vh;
+  background-size: cover;
+  color: #000000;
+}
+
+.landing {
+  background: white url("assets/img/jobs-bg.jpg") no-repeat scroll center;
+  height: 100vh;
+  background-size: cover;
+  color: #000000;
+}
+
+.wrapper {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100%;
+}
