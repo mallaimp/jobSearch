@@ -45,7 +45,7 @@ let MyJobs:React.FC<IProps> =() =>{
                 <div className="row">
                     {
                         Object.keys(appliedJobs).length == 0 && 
-                        <p className="text-center fw-bolder">No Data Found</p>
+                        <p className="text-center pOverride fw-bolder">No Data Found</p>
                     }
                     {
                         appliedJobs.map((job)=>{
@@ -53,17 +53,17 @@ let MyJobs:React.FC<IProps> =() =>{
                                 <div className="col-sm-6 d-flex align-items-stretch mt-3" key={job._id}>
                                     <div className="card shadow-lg">
                                         <div className="card-body">
-                                            <p className="text-center fw-bolder">{job.title}</p>
-                                            <p className="text-center"><i className='fas fa-landmark'></i>&nbsp;{job.company}</p>
-                                            <p><i className="fa fa-suitcase" aria-hidden="true">&nbsp;&nbsp;</i>{job.experiance}
+                                            <p className="text-center fw-bolder pOverride">{job.title}</p>
+                                            <p className="text-center pOverride"><i className='fas fa-landmark'></i>&nbsp;{job.company}</p>
+                                            <p className="pOverride"><i className="fa fa-suitcase" aria-hidden="true">&nbsp;&nbsp;</i>{job.experiance}
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             <span className="fa-stack">
                                                 <i className="fa fa-circle-thin fa-stack-2x"></i>
                                                 <i className="fa fa-map-marker fa-stack-1x"></i>
                                                 </span>&nbsp;&nbsp;{job.location} 
                                             </p>
-                                            <p className="text">{job.skills}</p>
-                                            <p><i className="far fa-file-alt" aria-hidden="true"></i>&nbsp;{job.description}</p>
+                                            <p className="text pOverride">{job.skills}</p>
+                                            <p className="pOverride"><i className="far fa-file-alt" aria-hidden="true"></i>&nbsp;{job.description}</p>
                                             <br></br><br></br>
                                             
                                         </div>

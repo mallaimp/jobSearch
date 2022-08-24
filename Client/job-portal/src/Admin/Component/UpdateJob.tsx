@@ -60,17 +60,17 @@ let UpdateJob: React.FC<IProps> = ({}) => {
     },[])
     return (
         <>
-            <Navabar/>
-            <pre>{JSON.stringify(job)}</pre>
+           <div className="landing1">
+            <Navabar/>  
+            <br />
+            <div className="grid">
+                <div className="container divMargin">
             <Container className="mt-3">
                 <Row>
                     <Col>
                         <h3 className="text-success">
                             <i className="fa fa-black-tie"></i> Update Job
                         </h3>
-                        <p className="fst-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
-                            ad adipisci, assumenda atque deleniti deserunt dolorem doloribus maxime neque, odit placeat
-                            quas quibusdam quidem quis quisquam quos reprehenderit similique ut!</p>
                     </Col>
                 </Row>
 
@@ -195,6 +195,9 @@ let UpdateJob: React.FC<IProps> = ({}) => {
                     </Col>
                 </Row>
             </Container>
+            </div>
+            </div>
+            </div>
         </>
     )
 };

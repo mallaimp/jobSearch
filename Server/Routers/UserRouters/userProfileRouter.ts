@@ -24,11 +24,18 @@ userProfileRouter.get("/", tokenVerifier, async (request:Request, response:Respo
         const mongoUserId = new mongoose.Types.ObjectId(requestedUser.id);
         let profile = await ProfileTable.findOne({user:mongoUserId});
 
+        if(profile){
+            return response.status(200).json({
+                profile:profile,
+                message:"All Profile Data"
+            })
+        }else{
+            return response.status(200).json({
+                profile:[],
+                message:"All Profile Data"
+            })
+        }
         
-        return response.status(200).json({
-            profile:profile,
-            message:"All Profile Data"
-        })
     }
     catch(errors){
         return response.status(500).json({

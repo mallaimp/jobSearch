@@ -40,13 +40,15 @@ let AdminJobs:React.FC<IProps> =() =>{
 
     return(
         <>
+        <div className="landing1">
             <Navabar/>  
-            <div className="grid mt-4">
-                <div className="container">
-                     <div className="row mt-5 mb-5">
+            <br />
+            <div className="grid">
+                <div className="container divMargin">
+                     <div className="row">
                         <div className="col">
-                            <div className="card shadow-lg">
-                                <div className="card-body">
+                            <div className="">
+                                
                                 
                                 <div className="row">
                                     <div className="col-sm-11">
@@ -56,15 +58,16 @@ let AdminJobs:React.FC<IProps> =() =>{
                                         <Link to="/admin/jobs/add" className="btn btn-success">+</Link>
                                     </div>
                                 </div>
+                                <div className="card-body text-center">
                                 <Table striped bordered hover>
                                         <thead>
                                             <tr>
-                                                <th><p className="text-center">Title</p></th>
-                                                <th><p className="text-center">Company</p></th>
-                                                <th><p className="text-center">Location</p></th>
-                                                <th><p className="text-center">Experiance</p></th>
-                                                <th><p className="text-center">Skills</p></th>
-                                                <th><p className="text-center">Action</p></th>
+                                                <th>Title</th>
+                                                <th>Company</th>
+                                                <th>Location</th>
+                                                <th>Experiance</th>
+                                                <th>Skills</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -79,11 +82,11 @@ let AdminJobs:React.FC<IProps> =() =>{
                                                 jobs.map((job)=>{
                                                     return (
                                                         <tr key={job._id}>
-                                                            <td><p className="text-center">{job.title}</p></td>
-                                                            <td><p className="text-center">{job.company}</p></td>
-                                                            <td><p className="text-center">{job.location}</p></td>
-                                                            <td><p className="text-center">{job.experiance}</p></td>
-                                                            <td><p className="text-center">{job.skills}</p></td>
+                                                            <td>{job.title}</td>
+                                                            <td>{job.company}</td>
+                                                            <td>{job.location}</td>
+                                                            <td>{job.experiance}</td>
+                                                            <td>{job.skills}</td>
                                                             
                                                             <td>
                                                                 <span className="text-center"><i onClick={()=>deleteJob(job._id)} className="fa fa-trash" aria-hidden="true"></i></span>
@@ -101,6 +104,7 @@ let AdminJobs:React.FC<IProps> =() =>{
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </>
     );

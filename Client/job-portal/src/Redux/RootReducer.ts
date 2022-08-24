@@ -4,6 +4,7 @@ import * as profileReducer from "./Profile/profile.slices";
 import * as jobReducer from "./AdminJob/job.slice";
 import * as testReducer from "./Test/test.slices";
 import * as userJobReducer from "./UserJob/job.slice";
+import * as adminUserReducer from "./UsersDetails/userDetails.slice";
 
 const RootReducer = combineReducers({
     [userReducer.usersFeatureKey]: userReducer.userSlice.reducer,
@@ -11,6 +12,7 @@ const RootReducer = combineReducers({
     [jobReducer.jobFeatureKey]: jobReducer.jobSlice.reducer,
     // [testReducer.testFeatureKey]: testReducer.testSlice.reducer,
     [userJobReducer.userJobFeatureKey]: userJobReducer.userJobSlice.reducer,
+    [adminUserReducer.adminUsersFeatureKey]: adminUserReducer.adminUserSlice.reducer,
 });
 
 export default RootReducer;
