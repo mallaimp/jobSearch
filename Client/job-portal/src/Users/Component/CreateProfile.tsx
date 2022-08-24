@@ -83,7 +83,7 @@ let CreateProfile: React.FC<IProps> = ({}) => {
                         <h3 className="text-success">
                             <i className="fa fa-user-circle"></i> Update a Profile
                         </h3>
-                        <p className="fst-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus
+                        <p className="fst-italic pOverride">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus
                             quisquam, suscipit! Ab aut dicta doloribus enim iure laboriosam, maxime nam nihil, odio
                             officia reiciendis repudiandae sapiente similique sunt tempora voluptates.</p>
                     </Col>
@@ -92,14 +92,12 @@ let CreateProfile: React.FC<IProps> = ({}) => {
                 <Row>
                     <Col xs={5}>
                         <Form noValidate validated={validated} onSubmit={handleSubmit}>
-                            <p>Profile Details</p>
-                            
-                           
+                            <h3>Profile Details</h3>
 
                             <Form.Group className="mb-2">
                                 <Form.Control
                                     name={'location'}
-                                    value={profile.location}
+                                    value={profile == null?"":profile.location}
                                     onChange={updateInput}
                                     type="text" placeholder="Location" required></Form.Control>
                                 <Form.Control.Feedback>
@@ -113,7 +111,7 @@ let CreateProfile: React.FC<IProps> = ({}) => {
                             <Form.Group className="mb-2">
                                 <Form.Control
                                     name={'skills'}
-                                    value={profile.skills}
+                                    value={profile == null?"":profile.skills}
                                     onChange={updateInput}
                                     type="text" placeholder="Skills" required></Form.Control>
                                 <Form.Control.Feedback>
@@ -127,7 +125,7 @@ let CreateProfile: React.FC<IProps> = ({}) => {
                             <Form.Group className="mb-2">
                                 <Form.Select
                                     name={'designation'}
-                                    value={profile.designation}
+                                    value={profile == null?"":profile.designation}
                                     onChange={updateInput} required>
                                     <option
                                         value=""

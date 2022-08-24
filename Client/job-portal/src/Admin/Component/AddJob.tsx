@@ -67,16 +67,17 @@ let AddJob: React.FC<IProps> = ({}) => {
     
     return (
         <>
-            <Navabar/>
-            <Container className="mt-3">
+            <div className="landing1">
+            <Navabar/>  
+            <br />
+            <div className="grid">
+                <div className="container divMargin">
+            <Container>
                 <Row>
                     <Col>
                         <h3 className="text-success">
                             <i className="fa fa-black-tie"></i> Add Job
                         </h3>
-                        <p className="fst-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
-                            ad adipisci, assumenda atque deleniti deserunt dolorem doloribus maxime neque, odit placeat
-                            quas quibusdam quidem quis quisquam quos reprehenderit similique ut!</p>
                     </Col>
                 </Row>
 
@@ -201,6 +202,9 @@ let AddJob: React.FC<IProps> = ({}) => {
                     </Col>
                 </Row>
             </Container>
+            </div>
+            </div>
+            </div>
         </>
     )
 };

@@ -21,6 +21,7 @@ import UpdateJob from './Admin/Component/UpdateJob';
 import Test from './Users/Component/Test';
 import { ToastContainer } from 'react-toastify';
 import PrivateRoute from './Router/Private.Router';
+import Users from './Admin/Component/Users';
 
 function App() {
   return (
@@ -100,7 +101,7 @@ function App() {
                   <UpdateJob/>
                 </PrivateRoute>
                 }/>
-                <Route path='/test' element={<Test/>}/>
+                <Route path='/admin/users' element={<Users/>}/>
 
             </Routes>
         </BrowserRouter>

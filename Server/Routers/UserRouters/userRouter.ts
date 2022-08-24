@@ -19,12 +19,45 @@ const userRouter:Router = express.Router();
     @access : PUBLIC
     @fields : email, password
  */
-    userRouter.get("/", async (request:Request, response:Response)=>{
-    let user = await User.find();
-    response.status(200);
-    response.json({
-        user:user
-    })
+userRouter.get("/", async (request:Request, response:Response)=>{
+    // try{
+        let user = await User.find({isAdmin:false});
+        if(user){
+            let completeData =[]
+            for (let i=0; i < user.length;i++){
+                const mongoJObId = new mongoose.Types.ObjectId(user[i]._id);
+                let profileDetails = await ProfileTable.find({user:mongoJObId});
+                if(profileDetails.length > 0){
+                    let data ={
+                        "id":user[i]._id,
+                        "name":user[i].name,
+                        "email":user[i].email,
+                        "location":profileDetails[0].location,
+                        "designation":profileDetails[0].designation,
+                        "skills":profileDetails[0].skills,
+                        "experience":profileDetails[0].experience,
+                        "education":profileDetails[0].education,
+                    }
+                    completeData.push(data);
+                }
+            }
+            
+            return response.status(200).json({
+                user:completeData
+            })
+        }
+        response.status(200);
+        response.json({
+            user:user
+        })
+    // }
+    // catch(error){
+    //     response.status(500);
+    //     response.json({
+    //         error:error
+    //     })
+    // }
+    
 })
 
 /*

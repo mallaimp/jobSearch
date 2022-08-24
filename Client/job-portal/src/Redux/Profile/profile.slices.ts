@@ -27,7 +27,19 @@ const initialState: InitialState = {
 export const profileSlice = createSlice({
     name: 'profileSlice',
     initialState: initialState,
-    reducers: {},
+    reducers: {
+        profileLogoutAction:(state,action)=>{
+            // state.profiles=[];
+            // state.loading=false;
+            // state.successMessage="";
+            // state.errorMessage={}  as SerializedError;
+            // state.profile={} as IProfile
+
+            let  nsate = state as InitialState;
+            nsate = initialState as InitialState;
+            console.log(state);
+        }
+    },
     extraReducers: (builder) => {
         // createProfileAction
         builder.addCase(profileActions.createProfileAction.pending, (state, action) => {
@@ -99,7 +111,7 @@ export const profileSlice = createSlice({
         //  Delete an education of a Profile
         .addCase(profileActions.deleteEducationOfProfileAction.pending, (state, action) => {
                 state.loading = true;
-            }).addCase(profileActions.deleteEducationOfProfileAction.fulfilled, (state, action) => {
+        }).addCase(profileActions.deleteEducationOfProfileAction.fulfilled, (state, action) => {
             state.loading = false;
             state.successMessage = action.payload.message;
         }).addCase(profileActions.deleteEducationOfProfileAction.rejected, (state, action) => {
@@ -109,3 +121,5 @@ export const profileSlice = createSlice({
         })
     }
 });
+
+export const {profileLogoutAction} = profileSlice.actions;

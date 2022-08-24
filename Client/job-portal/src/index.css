@@ -20,7 +20,14 @@ code {
 }
 
 .landing {
-  background: white url("assets/img/jobs-bg.jpg") no-repeat scroll center;
+  background: white url("assets/img/job2.jpg") no-repeat scroll center;
+  height: 100vh;
+  background-size: cover;
+  color: #000000;
+}
+
+.landing1 {
+  background: white url("assets/img/bg3.jpg") no-repeat scroll center;
   height: 100vh;
   background-size: cover;
   color: #000000;
@@ -29,4 +36,14 @@ code {
 .wrapper {
   background-color: rgba(0, 0, 0, 0.7);
   height: 100%;
+}
+
+.divMargin{
+  margin-top: 7%;
+  border: 2px solid lightgoldenrodyellow;
+  /* border-left: ;
+  border-right: ; */
+  border-bottom: 0px !important;
+  padding: 2% 3% 3% 2%;
+  color: #000000 !important;
 }

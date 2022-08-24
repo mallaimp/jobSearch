@@ -35,36 +35,47 @@ let Profile:React.FC<IProps> =() =>{
     let [education,setEducation] = useState<IEducation[]>([] as IEducation[]);
     useEffect(() => {
         dispatch(profileActions.getMyProfileAction());
-        if(profile.experience.length > 0){
-            setExperiance(profile.experience);
-        }else{
-            setExperiance(profile.experience);
+       
+        if(profile){
+            if(Object.keys(profile).length>0){
+                if(Object.keys(profile.experience).length>0){
+                    // if(profile.experience.length > 0){
+                        setExperiance(profile.experience);
+                    }else{
+                        setExperiance(profile.experience);
+                    }
+        
+                    if(Object.keys(profile.education).length>0){
+                    // if(profile.education.length > 0){
+                        setEducation(profile.education);
+                    }else{
+                        setEducation(profile.education);   
+                    }
+            }
         }
-
-        if(profile.education.length > 0){
-            setEducation(profile.education);
-        }else{
-            setEducation(profile.education);   
-        }
+        
+        
 
     }, []);
     useEffect(() => {
         dispatch(profileActions.getMyProfileAction());
         
-        if(profile.experience.length > 0){
-            
-            setExperiance(profile.experience);
-            
-        }else{
-            setExperiance(profile.experience);
-        }
+        if(profile){
+            if(Object.keys(profile).length>0){
+                if(Object.keys(profile.experience).length>0){
+                    setExperiance(profile.experience);
+                }else{
+                    setExperiance(profile.experience);
+                }
 
-        if(profile.education.length > 0){
-            setEducation(profile.education);
-        }else{
-            setEducation(profile.education);   
+                if(Object.keys(profile.education).length>0){
+                    setEducation(profile.education);
+                }else{
+                    setEducation(profile.education);   
+                }
+            }
         }
-    }, [successMessage]);
+    }, [profile]);
 
     let deleteEducation = (educationId:any) =>{
         if (educationId) {
@@ -102,11 +113,9 @@ let Profile:React.FC<IProps> =() =>{
     return(
         <>
             <Navabar/> 
-
             <div className="grid mt-4">
                 <div className="container">
                     <h1>Profile Details</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, corporis. Quaerat rem illum quasi. Saepe eos in omnis quaerat hic cum consequatur perspiciatis excepturi laboriosam et nulla dolore, non nostrum.</p>
                     {/* <div className="row">
                         <div className="col-sm-12">
                             <div className="card shadow-lg">
@@ -152,9 +161,9 @@ let Profile:React.FC<IProps> =() =>{
                                             <tr>
                                                 <td>{user?.name}</td>
                                                 <td>{user?.email}</td>
-                                                <td>{profile.location}</td>
-                                                <td>{profile.skills}</td>
-                                                <td>{profile.designation}</td>
+                                                <td>{profile==null?"":profile.location}</td>
+                                                <td>{profile==null?"":profile.skills}</td>
+                                                <td>{profile==null?"":profile.designation}</td>
                                             </tr>
                                         </tbody>
                                     </Table>
@@ -177,13 +186,13 @@ let Profile:React.FC<IProps> =() =>{
                                 <Table striped bordered hover>
                                         <thead>
                                             <tr>
-                                                <th><p className="text-center">Title</p></th>
-                                                <th><p className="text-center">Company</p></th>
-                                                <th><p className="text-center">Location</p></th>
-                                                <th><p className="text-center">From</p></th>
-                                                <th><p className="text-center">To</p></th>
-                                                <th><p className="text-center">Current</p></th>
-                                                <th><p className="text-center">Action</p></th>
+                                                <th><p className="text-center fw-bold pOverride">Title</p></th>
+                                                <th><p className="text-center fw-bold pOverride">Company</p></th>
+                                                <th><p className="text-center pOverride fw-bold">Location</p></th>
+                                                <th><p className="text-center pOverride fw-bold">From</p></th>
+                                                <th><p className="text-center pOverride fw-bold">To</p></th>
+                                                <th><p className="text-center pOverride fw-bold">Current</p></th>
+                                                <th><p className="text-center pOverride fw-bold">Action</p></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -197,31 +206,31 @@ let Profile:React.FC<IProps> =() =>{
                                                 experience.map((exp)=>{
                                                     return (
                                                         <tr>
-                                                            <td><p className="text-center">{exp.title}</p></td>
-                                                            <td><p className="text-center">{exp.company}</p></td>
-                                                            <td><p className="text-center">{exp.location}</p></td>
-                                                            <td><p className="text-center">{exp.from}</p></td>
-                                                            <td><p className="text-center">{exp.to}
+                                                            <td><p className="text-center pOverride">{exp.title}</p></td>
+                                                            <td><p className="text-center pOverride">{exp.company}</p></td>
+                                                            <td><p className="text-center pOverride">{exp.location}</p></td>
+                                                            <td><p className="text-center pOverride">{exp.from}</p></td>
+                                                            <td><p className="text-center pOverride">{exp.to}
                                                             
                                                                 {
                                                                     exp.to == "" &&
-                                                                    <p className="text-center"> - </p>
+                                                                    <p className="text-center pOverride"> - </p>
                                                                 }
                                                             </p></td>
                                                             <td>
                                                                 {
                                                                     exp.current == true &&
-                                                                    <p className="text-center">Yes</p>
+                                                                    <p className="text-center pOverride">Yes</p>
                                                                 }
 
 {
                                                                     exp.current == false &&
-                                                                    <p className="text-center">-</p>
+                                                                    <p className="text-center pOverride">-</p>
                                                                 }
                                                             
                                                             </td>
                                                             <td>
-                                                                <p className="text-center"><i onClick={()=>deleteExperiance(exp._id)} className="fa fa-trash" aria-hidden="true"></i></p>
+                                                                <p className="text-center pOverride"><i onClick={()=>deleteExperiance(exp._id)} className="fa fa-trash" aria-hidden="true"></i></p>
 
                                                             </td>
                                                         </tr>
@@ -234,9 +243,9 @@ let Profile:React.FC<IProps> =() =>{
                             </div>
                         </div>
                     </div>
-                    <div className="row mt-5 mb-5">
+                    <div className="row mt-5 mb-14">
                         <div className="col">
-                            <div className="card shadow-lg">
+                            <div className="card shadow-lg mb-10">
                                 <div className="card-body">
                                 <div className="row">
                                     <div className="col-sm-11">
@@ -249,30 +258,30 @@ let Profile:React.FC<IProps> =() =>{
                                 <Table striped bordered hover>
                                         <thead>
                                             <tr>
-                                                <th><p className="text-center">School</p></th>
-                                                <th><p className="text-center">Degree</p></th>
-                                                <th><p className="text-center">fieldOfStudy</p></th>
-                                                <th><p className="text-center">Pass-Out</p></th>
-                                                <th><p className="text-center">Action</p></th>
+                                                <th><p className="text-center pOverride fw-bold">School</p></th>
+                                                <th><p className="text-center pOverride fw-bold">Degree</p></th>
+                                                <th><p className="text-center pOverride fw-bold">fieldOfStudy</p></th>
+                                                <th><p className="text-center pOverride fw-bold">Pass-Out</p></th>
+                                                <th><p className="text-center pOverride fw-bold">Action</p></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {
                                                 education.length==0 &&
                                                 <tr>
-                                                    <td className="text-center" colSpan={7}>No Data Found</td>
+                                                    <td className="text-center pOverride" colSpan={7}>No Data Found</td>
                                                 </tr>
                                             }
                                             {
                                                 education.map((ed)=>{
                                                     return (
                                                         <tr key={ed._id}>
-                                                            <td><p className="text-center">{ed.school}</p></td>
-                                                            <td><p className="text-center">{ed.degree}</p></td>
-                                                            <td><p className="text-center">{ed.fieldOfStudy}</p></td>
-                                                            <td><p className="text-center">{ed.passout}</p></td>
+                                                            <td><p className="text-center pOverride">{ed.school}</p></td>
+                                                            <td><p className="text-center pOverride">{ed.degree}</p></td>
+                                                            <td><p className="text-center pOverride">{ed.fieldOfStudy}</p></td>
+                                                            <td><p className="text-center pOverride">{ed.passout}</p></td>
                                                             <td>
-                                                            <p className="text-center"><i onClick={()=>deleteEducation(ed._id)} className="fa fa-trash" aria-hidden="true"></i></p>
+                                                            <p className="text-center pOverride"><i onClick={()=>deleteEducation(ed._id)} className="fa fa-trash" aria-hidden="true"></i></p>
 
                                                             </td>
                                                         </tr>
@@ -285,6 +294,8 @@ let Profile:React.FC<IProps> =() =>{
                             </div>
                         </div>
                     </div>
+                    <br />
+                    <br />
                 </div>
             </div>
         </>
