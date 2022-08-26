@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.1.2",
+    "@react-pdf/pdfkit": "^2.4.0",
     "@reduxjs/toolkit": "^1.8.5",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -16,18 +17,30 @@
     "@types/react-redux": "^7.1.24",
     "@types/react-router-dom": "^5.3.3",
     "@types/redux-logger": "^3.0.9",
+    "assert": "^2.0.0",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
+    "browserify-zlib": "^0.2.0",
+    "buffer": "^6.0.3",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "mdb-react-ui-kit": "^4.1.0",
+    "process": "^0.11.10",
     "react": "^18.2.0",
     "react-bootstrap": "^2.4.0",
     "react-dom": "^18.2.0",
+    "react-pdf": "^5.7.2",
+    "react-pdf-print": "^0.2.0",
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-to-print": "^2.14.7",
     "react-toastify": "^9.0.7",
     "redux-logger": "^3.0.6",
+    "rewire": "^6.0.0",
+    "stream-browserify": "^3.0.0",
     "typescript": "^4.7.4",
+    "util": "^0.12.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -53,5 +66,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-pdf": "^5.7.2"
   }
 }

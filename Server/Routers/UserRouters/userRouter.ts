@@ -32,6 +32,7 @@ userRouter.get("/", async (request:Request, response:Response)=>{
                         "id":user[i]._id,
                         "name":user[i].name,
                         "email":user[i].email,
+                        "avatarImg":user[i].avatarImg,
                         "location":profileDetails[0].location,
                         "designation":profileDetails[0].designation,
                         "skills":profileDetails[0].skills,

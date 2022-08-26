@@ -22,6 +22,7 @@ import Test from './Users/Component/Test';
 import { ToastContainer } from 'react-toastify';
 import PrivateRoute from './Router/Private.Router';
 import Users from './Admin/Component/Users';
+import PdfGenerate from './Admin/Component/PdfGenerate';
 
 function App() {
   return (
@@ -102,6 +103,7 @@ function App() {
                 </PrivateRoute>
                 }/>
                 <Route path='/admin/users' element={<Users/>}/>
+                <Route path='/admin/users/details/:userId' element={<PdfGenerate/>}/>
 
             </Routes>
         </BrowserRouter>

@@ -33,6 +33,13 @@ code {
   color: #000000;
 }
 
+.landing2 {
+  background: white url("assets/img/bg3.jpg") no-repeat scroll center;
+  height: 100%;
+  background-size: cover;
+  color: #000000;
+}
+
 .wrapper {
   background-color: rgba(0, 0, 0, 0.7);
   height: 100%;

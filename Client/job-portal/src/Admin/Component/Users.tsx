@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Table } from "react-bootstrap";
 import Navabar from "../../Layouts/Navabar";
 import { IEducation, IExperience, IProfile } from "../../Users/Models/IProfile";
@@ -10,14 +10,18 @@ import { RootUserState, usersFeatureKey } from "../../Redux/User/user.slice";
 import * as profileActions from "../../Redux/Profile/profile.actions";
 import { ToastUtil } from "../../Util/ToastUtil";
 import AdminNavbar from "../../Layouts/AdminNavbar";
-
+import { Document, Page } from 'react-pdf';
 import * as userDetailsactions from "../../Redux/UsersDetails/userDetails.actions";
 import { adminUsersFeatureKey, RootAdminUserState } from "../../Redux/UsersDetails/userDetails.slice";
-
+import JsPDF from 'jspdf';
+import PdfGenerate from "./PdfGenerate";
+import ReactToPrint from 'react-to-print';
+// import Printer, { print } from "react-pdf-print";
 interface IProps{}
 interface IState{}
 
 let Users:React.FC<IProps> =() =>{
+    
     const navigate = useNavigate();
 
     const dispatch: AppDispatch = useDispatch();
@@ -30,12 +34,11 @@ let Users:React.FC<IProps> =() =>{
     let {user,loading} = userState;
     useEffect(() => {
         dispatch(userDetailsactions.getAllUsersAction());
-      
     }, []);
     
     return(
         <>
-           <div className="landing1">
+           <div className="landing1" id="report">
             <AdminNavbar/> 
            <br />
             <div className="grid">
@@ -72,18 +75,21 @@ let Users:React.FC<IProps> =() =>{
                                                 <th>Location</th>
                                                 <th>Skills</th>
                                                 <th>Designation</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {
                                                 user.map((users:any)=>{
                                                     return(
-                                                        <tr>
+                                                        <tr key={users.id}>
                                                         <td>{users.name}</td>
                                                         <td>{users.email}</td>
                                                         <td>{users.location}</td>
                                                         <td>{users.skills}</td>
                                                         <td>{users.designation}</td>
+                                                        <td>{user.id}<Link to={`/admin/users/details/${users.id}`}><i className="fa-solid fa-file-export"></i></Link></td>
+                                                        {/* <td><i onClick={()=>generatePDF(users.id)} className="fa-solid fa-file-export"></i></td> */}
                                                     </tr>
                                                     )
                                                 })
