@@ -21,6 +21,9 @@ let AdminNavbar:React.FC<IProps> =() =>{
     // top: "3px",
     'backgroud-color': "#34567",
    };
+   let myDispaly:any ={
+    visibility:'hidden'
+   }
    const dispatch: AppDispatch = useDispatch();
    const clickLogOut = () => {
         dispatch(logoutAction({}));
@@ -112,15 +115,15 @@ let AdminNavbar:React.FC<IProps> =() =>{
                             <li className="active"><Link to={'/admin/jobs'} className="text-decoration-none text-light"><span>Jobs</span></Link></li>
                             &nbsp;&nbsp;
                             <li className="active"><Link to={'/admin/users'} className="text-decoration-none text-light"><span>Users</span></Link></li>
-                            <li><a ><span></span></a></li>
-                            <li><a ><span></span></a></li>
-                            <li><a ><span></span></a></li>
-                            <li><a ><span></span></a></li>
-                            <li><a ><span></span></a></li>
-                            <li><a ><span></span></a></li>
-                            <li><a ><span></span></a></li>
-                            <li><a ><span></span></a></li>
-                            <li><a ><span></span></a></li>
+                            <li style={myDispaly}><a ><span></span></a></li>
+                            <li style={myDispaly}><a ><span></span></a></li>
+                            <li style={myDispaly}><a ><span></span></a></li>
+                            <li style={myDispaly}><a ><span></span></a></li>
+                            <li style={myDispaly}><a ><span></span></a></li>
+                            <li style={myDispaly}><a ><span></span></a></li>
+                            <li style={myDispaly}><a ><span></span></a></li>
+                            <li style={myDispaly}><a ><span></span></a></li>
+                            <li style={myDispaly}><a ><span></span></a></li>
                             <li className="active" style={mystyle}>
                                 {/* <Link to={'/logout'} className="text-decoration-none text-light"><span>Log Out</span>
                                 

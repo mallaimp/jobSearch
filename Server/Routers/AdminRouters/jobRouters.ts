@@ -49,7 +49,8 @@ jobRouter.get("/admin/", tokenVerifier, async (request:Request, response:Respons
         let mongoUserId = new mongoose.Types.ObjectId(requestedUser.id);
         let jobs = await JobTable.find({user:mongoUserId}).sort({_id:-1});
         return response.status(200).json({
-            jobs:jobs
+            jobs:jobs,
+            message : "Successfully get all details"
         })
     }   
     catch(error){

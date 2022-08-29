@@ -19,11 +19,29 @@ let UpdateJob: React.FC<IProps> = ({}) => {
     const jobState = useSelector((state: RooAdminJobState) => {
         return state[jobFeatureKey];
     });
+
+    let {successMessage,job,loading,errorMessage} = jobState;
+
     const dispatch: AppDispatch = useDispatch();
-    let [user, setUser] = useState<UserView>();
+
     const [validated, setValidated] = useState(false);
-    let {loading,errorMessage} = jobState;
-    const [job, setJobs] = useState<any>(jobState.job);
+
+    useEffect(()=>{
+        dispatch(jobActions.getAJobAction(jobId)).then((response)=>{
+            console.log(response.payload.job);
+            setJobs(response.payload.job);
+            console.log(job);
+            console.log(response);
+        })
+        
+    },[]);
+
+    useEffect(()=>{
+        dispatch(jobActions.getAJobAction(jobId));
+        setJobs(jobs);
+    },[job]);
+
+    const [jobs, setJobs] = useState<any>(job);
     
     const updateInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         setJobs((prevState:any) => {
@@ -38,7 +56,7 @@ let UpdateJob: React.FC<IProps> = ({}) => {
         event.preventDefault();
         const form = event.currentTarget;
         if (form.checkValidity() === true) {
-            dispatch(jobActions.updateJobAction(job)).then((response: any) => {
+            dispatch(jobActions.updateJobAction(jobs)).then((response: any) => {
                 
                 if (response.error) {
                     ToastUtil.displayErrorToast(response.error.message);
@@ -55,9 +73,6 @@ let UpdateJob: React.FC<IProps> = ({}) => {
         setValidated(true);
     };
 
-    useEffect(()=>{
-        dispatch(jobActions.getAJobAction(jobId));
-    },[])
     return (
         <>
            <div className="landing1">
@@ -81,7 +96,7 @@ let UpdateJob: React.FC<IProps> = ({}) => {
                                 <InputGroup.Text id="basic-addon1"
                                                  className="bg-light-green text-dark">Title</InputGroup.Text>
                                 <Form.Control
-                                    value={job.title}
+                                    value={jobs.title}
                                     name={'title'}
                                     onChange={updateInput}
                                     type="text"
@@ -100,7 +115,7 @@ let UpdateJob: React.FC<IProps> = ({}) => {
                                                  className="bg-light-green text-dark">Company</InputGroup.Text>
                                 <Form.Control
                                     required
-                                    value={job.company}
+                                    value={jobs.company}
                                     name={'company'}
                                     onChange={updateInput}
                                     type="text"
@@ -118,7 +133,7 @@ let UpdateJob: React.FC<IProps> = ({}) => {
                                                  className="bg-light-green text-dark">Location</InputGroup.Text>
                                 <Form.Control
                                     required
-                                    value={job.location}
+                                    value={jobs.location}
                                     name={'location'}
                                     onChange={updateInput}
                                     type="text"
@@ -135,7 +150,7 @@ let UpdateJob: React.FC<IProps> = ({}) => {
                                 <InputGroup.Text id="basic-addon1" className="bg-light-green text-dark">Skills</InputGroup.Text>
                                 <Form.Control
                                     required
-                                    value={job.skills}
+                                    value={jobs.skills}
                                     name={'skills'}
                                     onChange={updateInput}
                                     type="text"
@@ -152,7 +167,7 @@ let UpdateJob: React.FC<IProps> = ({}) => {
                                 <InputGroup.Text id="basic-addon1" className="bg-light-green text-dark">Experiance</InputGroup.Text>
                                 <Form.Control
                                     required
-                                    value={job.experiance}
+                                    value={jobs.experiance}
                                     name={'experiance'}
                                     onChange={updateInput}
                                     type="text"
@@ -170,10 +185,10 @@ let UpdateJob: React.FC<IProps> = ({}) => {
                                                  className="bg-light-green text-dark">Description</InputGroup.Text>
                                 <Form.Control
                                     required
-                                    value={job.description}
+                                    value={jobs.description}
                                     name={'description'}
                                     onChange={updateInput}
-                                    as="textarea" rows={3}
+                                    as="textarea" rows={10} cols={10}
                                     placeholder="Description"
                                 />
                                 <Form.Control.Feedback>

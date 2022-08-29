@@ -38,7 +38,7 @@ let Users:React.FC<IProps> =() =>{
     
     return(
         <>
-           <div className="landing1" id="report">
+           <div className="landing1">
             <AdminNavbar/> 
            <br />
             <div className="grid">
